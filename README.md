@@ -7,7 +7,7 @@ Configs, more features, and precompiled binaries pending.
 
 ## Usage
 ```
-whut <word to translate>
+whut <word or phrase to translate>
 ```
 
 ## Example

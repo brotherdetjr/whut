@@ -10,13 +10,12 @@ import (
 
 func main() {
     if len(os.Args) < 2 {
-        fmt.Println("Usage: whut <word to translate>")
+        fmt.Println("Usage: whut <word or phrase to translate>")
         os.Exit(1)
     }
     url := "https://glosbe.com/gapi/translate?from=eng&dest=rus&format=json&phrase=" + toWord(&os.Args)
-    client := &http.Client{}
     entry := &Entry{}
-    getJson(client, url, entry)
+    getJson(&http.Client{}, url, entry)
     for idx, val := range toSlice(entry) {
         fmt.Printf("%d. %s\n", idx + 1, val)
     }
