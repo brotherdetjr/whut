@@ -24,7 +24,7 @@ Output:
 ```
 cd whut
 go get jaytaylor.com/html2text
-go build
+go build -ldflags "-w"
 ```
 ## Unit Tests
 ```
