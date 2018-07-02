@@ -17,8 +17,8 @@ whut shortbread
 Output:
 ```
 1. песочное печенье
-2. very rich thick butter cookie
-3. A type of biscuit (cookie), popular in Britain, traditionally made from one part sugar, two parts butter and three parts flour
+2. very rich thick margarine cookie
+3. A type of biscuit (cookie), popular in Britain, traditionally made from one part sugar, two parts margarine and three parts flour
 ```
 ## Build
 ```
