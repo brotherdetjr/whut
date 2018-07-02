@@ -1,7 +1,7 @@
 # whut
 Command line word lookup
 
-Currently looks up English word on [glosbe.com] and lists its Russian translations.
+Currently looks up English word on http://glosbe.com and lists its Russian translations.
 
 Configs, more features, and precompiled binaries pending.
 
