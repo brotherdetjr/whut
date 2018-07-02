@@ -13,7 +13,7 @@ func main() {
         fmt.Println("Usage: whut <word to translate>")
         os.Exit(1)
     }
-    url := "https://glosbe.com/gapi/translate?from=eng&dest=rus&format=json&phrase=" + os.Args[1]
+    url := "https://glosbe.com/gapi/translate?from=eng&dest=rus&format=json&phrase=" + toWord(&os.Args)
     client := &http.Client{}
     entry := &Entry{}
     getJson(client, url, entry)
@@ -66,4 +66,16 @@ func appendText(result []string, text string) []string {
     } else {
         return result
     }
+}
+
+func toWord(args *[]string) string {
+    result := ""
+    lng := len(*args)
+    for i := 1; i < lng; i++ {
+        result += (*args)[i]
+        if i < lng - 1 {
+            result += "+"
+        }
+    }
+    return result
 }

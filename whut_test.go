@@ -21,7 +21,7 @@ func TestJsonUnmarshal(t *testing.T) {
   }, {
     "meanings" : [ {
       "language" : "en",
-      "text" : "very rich thick butter cookie"
+      "text" : "very rich thick margarine cookie"
     } ],
     "meaningId" : null,
     "authors" : [ 93369 ]
@@ -66,7 +66,7 @@ func TestJsonUnmarshal(t *testing.T) {
     expected := Entry{
         []Option{
             Option{Phrase: Value{"песочное печенье", "ru"}},
-            Option{Meanings: []Value{Value{"very rich thick butter cookie", "en"}}},
+            Option{Meanings: []Value{Value{"very rich thick margarine cookie", "en"}}},
             Option{Meanings: []Value{Value{"blah blah blah", "en"}}},
         },
     }
@@ -104,14 +104,14 @@ func TestToSlice(t *testing.T) {
             Option{Phrase: Value{"песочное печенье", "ru"}},
             Option{
                 Meanings: []Value{
-                    Value{"very rich <b>thick</b> butter cookie", "en"},
+                    Value{"very rich <b>thick</b> margarine cookie", "en"},
                     Value{"&quot;blah&quot;", "fr"},
                 },
             },
             Option{Meanings: []Value{Value{"blah blah blah&#39;s", "en"}}},
         },
     }
-    expected := []string{"песочное печенье", "very rich *thick* butter cookie", `"blah"`, "blah blah blah's"}
+    expected := []string{"песочное печенье", "very rich *thick* margarine cookie", `"blah"`, "blah blah blah's"}
     if !reflect.DeepEqual(toSlice(&parsed), expected) {
         t.Fail()
     }
@@ -120,6 +120,24 @@ func TestToSlice(t *testing.T) {
 func TestToSliceEmpty(t *testing.T) {
     t.Parallel()
     if toSlice(&Entry{[]Option{}}) != nil {
+        t.Fail()
+    }
+}
+
+func TestToWord(t *testing.T) {
+    t.Parallel()
+    args := []string{"ignore", "love", "me", "do"}
+    actual := toWord(&args)
+    if !reflect.DeepEqual(actual, "love+me+do") {
+        t.Fail()
+    }
+}
+
+func TestToWordSingle(t *testing.T) {
+    t.Parallel()
+    args := []string{"ignore", "hate"}
+    actual := toWord(&args)
+    if !reflect.DeepEqual(actual, "hate") {
         t.Fail()
     }
 }
